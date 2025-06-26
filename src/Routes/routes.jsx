@@ -3,7 +3,7 @@ import Register from "../pages/auth/register";
 import Dashboard from "../pages/dashboard";
 import Login from "../pages/auth/login";
 import Layout from "../Components/layout";
-import ProtectedRoute from "../Components/protectedRoute";
+import ProtectedRoute from "../Components/ProtectedRoute";
 import Managerole from "../pages/managerole/managerole";
 import PasswordReset from "../pages/resetpassword/passwordreset";
 import BlogCreateContainer from "../pages/Blog/blogCreatecontainer";
