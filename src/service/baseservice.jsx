@@ -1,5 +1,5 @@
 //export const AUTH_API = "http://localhost:3000/api";
-export const AUTH_API = "blogappbackend-production-6644.up.railway.app";
+export const AUTH_API = "https://blogappbackend-production-6644.up.railway.app";
 
 export const BASE_API = {
   LOGIN_USER: `${AUTH_API}/auth/login`,
