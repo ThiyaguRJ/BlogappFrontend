@@ -10,6 +10,7 @@ const BlogCreatePage = ({ categories, tags, onSubmit }) => {
   const [image, setImage] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
+  const [error, setError] = useState("");
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -19,9 +20,7 @@ const BlogCreatePage = ({ categories, tags, onSubmit }) => {
     },
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handlePostCreate = () => {
     if (!title || !content || !selectedCategory) {
       alert("Title, content, and category are required.");
       return;
@@ -42,6 +41,28 @@ const BlogCreatePage = ({ categories, tags, onSubmit }) => {
   const handleFileChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (title === "") {
+      setError("Title is required!");
+      return;
+    } else if (content === "") {
+      setError("Content is required!");
+      return;
+    } else if (image === null) {
+      setError("Image is required!");
+      return;
+    } else if (selectedCategory === "") {
+      setError("Category is required!");
+      return;
+    } else if (selectedTags?.length === 0) {
+      setError("Tags is required!");
+      return;
+    } else {
+      handlePostCreate();
     }
   };
 
@@ -154,6 +175,14 @@ const BlogCreatePage = ({ categories, tags, onSubmit }) => {
             Publish Post
           </button>
         </div>
+        {error && (
+          <p
+            className={`${
+              error === "Login Successfull!" ? "text-green-900" : "text-red-500"
+            } text-sm m-1 flex justify-center`}>
+            {error}
+          </p>
+        )}
       </form>
     </div>
   );
